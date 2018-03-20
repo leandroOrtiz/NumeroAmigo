@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.leodrumers.spinner.Operate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<CharSequence> adapter;
     EditText first, second;
     TextView answer;
+    Operate option = new Operate();
+
     public int op;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     //public void operar(double firstNumber, double secondNumber, long id){
     public void operar(View v){
         doit(v);
+        double result;
         if (first.getText().toString().equals("") || second.getText().toString().equals("")){
             answer.setText("Ingrese un valor valido");
         }else {
@@ -70,24 +74,26 @@ public class MainActivity extends AppCompatActivity {
             //int op = (int) id;
             switch (op) {
                 case 1:
-                    total = firstNumber + secondNumber;
-                    answer.setText("El resultado es " + total);
+
+                    answer.setText("El resultado es " + Long.toString((int) firstNumber,(int) secondNumber));
                     break;
                 case 2:
-                    total = firstNumber - secondNumber;
-                    answer.setText("El resultado es " + total);
+                    if (option.multiple(firstNumber,secondNumber))
+                        answer.setText(secondNumber + " es multiplo de: "+ firstNumber);
+                    else
+                        answer.setText(secondNumber + " No es multiplo de: "+ firstNumber);
                     break;
                 case 3:
-                    total = firstNumber * secondNumber;
-                    answer.setText("El resultado es " + total);
+                    if(option.friends(firstNumber) == secondNumber && option.friends(secondNumber) == firstNumber ){
+                        answer.setText("Los numero son amigos");
+                    }
+                    else{
+                        answer.setText("Los numeros no son amigos");
+                    }
                     break;
                 case 4:
-                    if (secondNumber != 0) {
-                        total = firstNumber / secondNumber;
-                        answer.setText("El resultado es " + total);
-                    } else {
-                        answer.setText("No se puede dividir por 0");
-                    }
+                    result =  option.potency(firstNumber,secondNumber);
+                    answer.setText("El resultado es " + result);
                     break;
                 default:
                     //Toast.makeText(getBaseContext(), "Seleccione una obcion valida " + op, Toast.LENGTH_LONG).show();
