@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Taller 4_2</string>
+    <string name="spinner_options"></string>
+    <string-array name="options">
+        <item>Seleccione Operacion</item>
+        <item>Sistema Numerico</item>
+        <item>Multiplo</item>
+        <item>Amigo</item>
+        <item>Potencia</item>
+    </string-array>
+</resources>
