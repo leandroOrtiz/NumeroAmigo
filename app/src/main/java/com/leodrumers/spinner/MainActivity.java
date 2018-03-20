@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.leodrumers.spinner.Operate;
-
 public class MainActivity extends AppCompatActivity {
 
     Spinner spinner;
@@ -85,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 3:
                     if(option.friends(firstNumber) == secondNumber && option.friends(secondNumber) == firstNumber ){
-                        answer.setText("Los numero son amigos");
+                        answer.setText("Los numeros son amigos");
                     }
                     else{
                         answer.setText("Los numeros no son amigos");
